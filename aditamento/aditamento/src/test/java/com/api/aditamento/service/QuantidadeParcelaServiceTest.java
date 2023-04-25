@@ -35,6 +35,7 @@ public class QuantidadeParcelaServiceTest {
         adtFin.setNovaQuantidadeParcelas("54");
         fin.setQuantidadeParcelas(54);
         ctt.setAtivo(true);
+        ctt.setParcelasEmAtraso(false);
         request.setAditamentoQuantidadeParcelas(adtFin);
         ContratoQuantidadeParcelasRequestDTO dtPgtoAdit = ContratoQuantidadeParcelasRequestDTO.builder().contrato(ctt).financeiro(fin).aditamentoQuantidadeParcelas(adtFin).build();
         dtPgtoAdit.setAditamentoQuantidadeParcelas(adtFin);

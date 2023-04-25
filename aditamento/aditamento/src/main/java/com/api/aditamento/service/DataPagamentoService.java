@@ -28,7 +28,7 @@ public class DataPagamentoService {
         } catch (AditaDataPagamentoException e){
             throw new AditaDataPagamentoException(e.getMessage());
         }
-        if(saida.getContrato().getAtivo().equals(true)){
+        if(saida.getContrato().getAtivo().equals(true) && saida.getContrato().getParcelasEmAtraso().equals(false)){
             return saida;
         }else{
             return null;
