@@ -26,7 +26,11 @@ public class QuantidadeParcelaService {
         } catch (AditaDataPagamentoException e){
             throw new AditaDataPagamentoException(e.getMessage());
         }
-        return saida;
+        if(saida.getContrato().getAtivo().equals(true)){
+            return saida;
+        }else{
+            return null;
+        }
     }
 
     public ContratoQuantidadeParcelasResponseDTO preencheResponse(ContratoQuantidadeParcelasRequestDTO entrada){
@@ -55,7 +59,14 @@ public class QuantidadeParcelaService {
         finAdt.setDataCalculo(dataDoDia.toString());
         finAdt.setTipoCalculo(MOCK_ADITAMENTO);
         finAdt.setValorTotal(MOCK_NOVO_VALOR_PARCELA);
-        finAdt.setQuantidadeParcelas(MOCK_NOVA_QUANTIDADE_PARCELAS);
+//        valida se a quantidade de parcelas é inferior a quantidade já existente
+        if(fin.getQuantidadeParcelas() < MOCK_NOVA_QUANTIDADE_PARCELAS){
+            Integer qtd_mock = Integer.valueOf(MOCK_NOVA_QUANTIDADE_PARCELAS);
+            finAdt.setQuantidadeParcelas(qtd_mock);
+        }else{
+            Integer qtd = Integer.valueOf(entrada.getAditamentoQuantidadeParcelas().getNovaQuantidadeParcelas());
+            finAdt.setQuantidadeParcelas(Integer.valueOf(qtd));
+        }
 //        recalcula o valor das parcelas
         finAdt.setValorParcelas(recalculaValor(MOCK_NOVO_VALOR_PARCELA, MOCK_NOVA_QUANTIDADE_PARCELAS));
         finAdt.setDiaPagamento(MOCK_NOVO_DIA_PAGAMENTO);

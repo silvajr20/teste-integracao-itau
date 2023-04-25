@@ -33,6 +33,7 @@ public class DataPagamentoServiceTest {
         var fin = new Financeiro();
         var adtFin = new AditamentoDataPagamento();
         adtFin.setNovaDataPagamento(4);
+        ctt.setAtivo(true);
         request.setAditamentoDataPagamento(adtFin);
         ContratoDataPagamentoRequestDTO dtPgtoAdit = ContratoDataPagamentoRequestDTO.builder().contrato(ctt).financeiro(fin).aditamentoDataPagamento(adtFin).build();
         dtPgtoAdit.setAditamentoDataPagamento(adtFin);

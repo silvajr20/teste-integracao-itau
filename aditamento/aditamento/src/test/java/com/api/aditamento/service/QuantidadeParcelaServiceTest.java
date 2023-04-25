@@ -33,6 +33,8 @@ public class QuantidadeParcelaServiceTest {
         var fin = new Financeiro();
         var adtFin = new AditamentoQuantidadeParcelas();
         adtFin.setNovaQuantidadeParcelas("54");
+        fin.setQuantidadeParcelas(54);
+        ctt.setAtivo(true);
         request.setAditamentoQuantidadeParcelas(adtFin);
         ContratoQuantidadeParcelasRequestDTO dtPgtoAdit = ContratoQuantidadeParcelasRequestDTO.builder().contrato(ctt).financeiro(fin).aditamentoQuantidadeParcelas(adtFin).build();
         dtPgtoAdit.setAditamentoQuantidadeParcelas(adtFin);

@@ -28,7 +28,11 @@ public class DataPagamentoService {
         } catch (AditaDataPagamentoException e){
             throw new AditaDataPagamentoException(e.getMessage());
         }
-        return saida;
+        if(saida.getContrato().getAtivo().equals(true)){
+            return saida;
+        }else{
+            return null;
+        }
     }
 
     public ContratoDataPagamentoResponseDTO preencheResponse(ContratoDataPagamentoRequestDTO entrada){
