@@ -1,0 +1,1 @@
+A documentação para poder validar e testar a Api está no arquivo Doc-Payload-API-Aditamento.Docx
